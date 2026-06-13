@@ -3,7 +3,7 @@ name: Deploy a GitHub Pages
 on:
   push:
     branches:
-      - claude/womens-jeans-website-plan-gsctca
+      - main
   workflow_dispatch:
 
 permissions:
