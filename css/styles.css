@@ -562,10 +562,35 @@ body.kh-nav-open { overflow: hidden; }
   .kh-nav__link { font-size: 1.05rem; letter-spacing: .28em; }
   .kh-nav__link--ecuador::after { left: 50%; right: auto; transform: translateX(-50%); width: 42px; }
 
+  /* Hero — contenido inferior optimizado para celular */
   .kh-content {
     left: 50%; right: auto; transform: translateX(-50%);
-    bottom: clamp(40px, 10vh, 96px);
-    width: fit-content; max-width: 90vw; align-items: center;
+    bottom: clamp(2.2rem, 8vh, 4rem);
+    width: min(92%, 520px); max-width: 92vw;
+    align-items: center;
+    text-shadow: 0 1px 16px rgba(18, 14, 11, .35);
   }
-  .kh-title { font-size: clamp(2.8rem, 18.5vw, 5.5rem); }
+  .kh-title {
+    font-size: clamp(3.2rem, 15vw, 6.2rem);
+    line-height: .9; letter-spacing: .01em;
+    color: #f6efe2;                       /* blanco cálido sobre el degradado */
+  }
+  .kh-divider { margin: clamp(12px, 2.6vw, 18px) 0 clamp(10px, 2vw, 14px); }
+  .kh-divider__line { opacity: .92; }
+  .kh-subtitle { color: #ece2d2; }
+  .kh-text { color: #e8ddca; font-weight: 400; }
+
+  /* Degradado inferior suave para legibilidad (solo móvil) */
+  .kalembu-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 62%;
+    background: linear-gradient(to top,
+      rgba(18, 14, 11, .78) 0%,
+      rgba(18, 14, 11, .44) 46%,
+      rgba(18, 14, 11, 0) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
 }
