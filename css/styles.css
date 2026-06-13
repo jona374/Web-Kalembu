@@ -203,9 +203,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round
 .hero__actions { margin-top: 2.4rem; display: flex; flex-wrap: wrap; gap: 1rem; }
 
 /* ============ 4. COLECCIÓN ============ */
-.collection__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.collection__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
 .color-card { background: var(--bg); }
-.color-card__media { aspect-ratio: 3/4; }
+.color-card__media { aspect-ratio: 4/5; overflow: hidden; }
 .color-card__media.placeholder::after { color: rgba(20,17,15,.38); }
 .color-card { overflow: hidden; }
 .color-card__media { transition: transform .7s var(--ease); }
@@ -213,6 +213,25 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round
 .color-card__body { padding: 22px 4px 6px; display: flex; flex-direction: column; gap: .5rem; }
 .color-card__index { font-family: var(--serif); font-size: .9rem; color: var(--accent); letter-spacing: .1em; }
 .color-card__name { font-family: var(--serif); font-weight: 500; font-size: 1.5rem; }
+
+/* ---- Colección: carrusel horizontal deslizable en celular (≤768px) ---- */
+@media (max-width: 768px) {
+  .collection__grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .collection__grid::-webkit-scrollbar { display: none; }
+  .color-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+}
 
 /* ============ 5. PRODUCTO ============ */
 .product { background: var(--bg-alt); }
@@ -403,13 +422,6 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round
 
 @media (max-width: 680px) {
   .container { padding: 0 20px; }
-  .collection__grid {
-    grid-auto-flow: column; grid-auto-columns: 78%; grid-template-columns: none;
-    overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px;
-    margin: 0 -20px; padding: 0 20px 12px; scrollbar-width: none;
-  }
-  .collection__grid::-webkit-scrollbar { display: none; }
-  .color-card { scroll-snap-align: start; }
 
   .features__grid { grid-template-columns: 1fr; }
   .benefits__grid { grid-template-columns: 1fr 1fr; gap: 28px; }
