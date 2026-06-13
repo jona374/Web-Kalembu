@@ -53,27 +53,31 @@
   /* ---------- Header al hacer scroll ---------- */
   function initHeaderScroll() {
     var header = $("#header");
+    if (!header) return;
     var onScroll = function () { header.classList.toggle("is-scrolled", window.scrollY > 10); };
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
   }
 
-  /* ---------- Menú móvil ---------- */
+  /* ---------- Menú móvil del hero ---------- */
   function initMobileNav() {
-    var burger = $("#burger"), nav = $("#navMenu"), overlay = $("#navOverlay");
+    var burger = $("#khBurger"), nav = $("#khNav");
+    if (!burger || !nav) return;
     function close() {
-      burger.classList.remove("is-open"); nav.classList.remove("is-open");
-      overlay.classList.remove("is-open"); burger.setAttribute("aria-expanded", "false");
+      burger.classList.remove("is-open");
+      nav.classList.remove("is-open");
+      burger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("kh-nav-open");
     }
     function toggle() {
       var open = nav.classList.toggle("is-open");
       burger.classList.toggle("is-open", open);
-      overlay.classList.toggle("is-open", open);
       burger.setAttribute("aria-expanded", String(open));
+      document.body.classList.toggle("kh-nav-open", open);
     }
     burger.addEventListener("click", toggle);
-    overlay.addEventListener("click", close);
-    $$(".nav__link").forEach(function (l) { l.addEventListener("click", close); });
+    $$(".kh-nav__link", nav).forEach(function (l) { l.addEventListener("click", close); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
   }
 
   /* ---------- Animaciones reveal ---------- */
