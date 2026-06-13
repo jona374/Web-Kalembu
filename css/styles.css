@@ -344,7 +344,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round
   box-shadow: 0 10px 30px rgba(37,211,102,.4); transition: transform .3s, box-shadow .3s;
   animation: wa-pulse 2.6s infinite;
 }
-.wa-float svg { width: 30px; height: 30px; stroke: none; }
+.wa-float svg { width: 30px; height: 30px; fill: #fff; stroke: none; }
 .wa-float:hover { transform: scale(1.08) translateY(-2px); }
 @keyframes wa-pulse { 0%,100%{ box-shadow: 0 10px 30px rgba(37,211,102,.4);} 50%{ box-shadow: 0 10px 38px rgba(37,211,102,.7);} }
 
