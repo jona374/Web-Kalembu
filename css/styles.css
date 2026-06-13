@@ -535,12 +535,8 @@ body.kh-nav-open { overflow: hidden; }
 /* ---- CELULAR ≤768px: usa la imagen móvil dedicada ---- */
 @media (max-width: 768px) {
   .kalembu-hero {
-    /* Imagen móvil nueva como capa principal; la anterior queda como
-       respaldo válido para que la portada nunca se vea en blanco si la
-       nueva aún no se ha subido. */
-    background-image:
-      url("../img/hero/2-celular-hero-kalembu-portada-desktop.jpeg"),
-      url("../img/hero/celular-hero-kalembu-portada-desktop.jpeg");
+    /* Imagen dedicada para celular (no afecta a la de escritorio). */
+    background-image: url("../img/hero/genera_esta_imagen_en_resolucion_202606130746.jpeg");
     background-position: center top;
     min-height: 100svh;
   }
